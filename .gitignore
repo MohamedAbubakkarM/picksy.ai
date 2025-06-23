@@ -1,0 +1,13 @@
+/picksyai/agents/FetcherAgent.py
+/picksyai/agents/SentimentAgent.py
+/picksyai/agents/SummariserAgent.py
+
+/picksyai/models
+
+/picksyai/tasks/FetchingTask.py
+/picksyai/tasks/SentimentAnalyseTask.py
+/picksyai/tasks/SummarisingTask.py
+
+/picksyai/tools/SentimentAnalyser.py
+/picksyai/tools/Summariser.py
+/picksyai/tools/TavilyScraper.py

@@ -1,0 +1,247 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# UV-specific configuration
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "black>=24.10.0",
+    "isort>=5.13.2",
+    "flake8>=7.1.1",
+    "mypy>=1.13.0",
+    "pre-commit>=4.0.1",
+]
+
+[project]
+name = "ecommerce-agent"
+version = "0.1.0"
+description = "CrewAI agent project with LMStudio integration"
+requires-python = ">=3.10,<=3.13"
+license = "MIT"
+authors = [
+    {name = "Mohamed Abubakkar M", email = "mohamedabubakkarmdm@gmail.com"},
+]
+keywords = ["ai", "agents", "crewai", "automation", "llm"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    # Core CrewAI dependencies - relaxed version constraints for Python 3.13 compatibility
+    "crewai>=0.130.0",
+    "crewai-tools>=0.45.0",
+    # LLM and AI dependencies
+    "openai>=1.51.0",
+    "anthropic>=0.40.0",
+    "litellm>=1.52.0",
+    "langchain>=0.3.7",
+    "langchain-core>=0.3.15",
+    "langchain-community>=0.3.7",
+    "langchain-openai>=0.2.8",
+    "dspy-ai>=2.5.0",
+    # PDF processing - updated for Python 3.13 compatibility
+    "PyPDF2>=3.0.1",
+    "pdfplumber>=0.11.4",
+    "pymupdf>=1.24.12",
+    "pdfminer.six>=20231228",
+    # YouTube processing
+    "pytube>=15.0.0",
+    "youtube-transcript-api>=0.6.2",
+    "yt-dlp>=2024.12.13",
+    # Vector stores and embeddings
+    "chromadb>=0.5.20",
+    "faiss-cpu>=1.9.0",
+    "sentence-transformers>=3.3.1",
+    "tiktoken>=0.8.0",
+    # LlamaIndex - Core and Essential Components
+    "llama-index>=0.11.0",
+    "llama-index-core>=0.11.0",
+    "llama-index-llms-openai>=0.2.0",
+    "llama-index-llms-anthropic>=0.2.0",
+    "llama-index-llms-ollama>=0.2.0",
+    "llama-index-embeddings-openai>=0.2.0",
+    "llama-index-embeddings-ollama>=0.2.0",
+    "llama-index-vector-stores-chroma>=0.2.0",
+    "llama-index-vector-stores-faiss>=0.2.0",
+    "llama-index-readers-file>=0.2.0",
+    "llama-index-readers-web>=0.2.0",
+    "llama-index-agent-openai>=0.3.0",
+    "llama-index-multi-modal-llms-openai>=0.2.0",
+    # MCP (Model Context Protocol) integration - separate installation if needed
+    # Note: Install these separately if MCP features are required
+    # "mcp>=1.0.0",
+    # "mcpadapt>=0.1.0",
+    # "fastmcp>=0.2.0",
+    # HTTP client for LMStudio API
+    "httpx>=0.28.1",
+    "requests>=2.32.3",
+    "aiohttp>=3.11.7",
+    # Data processing and utilities
+    "pandas>=2.2.3",
+    "numpy>=2.1.3",
+    "pydantic>=2.10.2",
+    "python-dotenv>=1.0.1",
+    "tenacity>=9.0.0",
+    "tqdm>=4.67.1",
+    # Configuration and serialization
+    "pyyaml>=6.0.2",
+    "toml>=0.10.2",
+    "jsonschema>=4.23.0",
+    # Logging and monitoring
+    "loguru>=0.7.2",
+    "rich>=13.9.4",
+    # Optional web scraping capabilities
+    "beautifulsoup4>=4.12.3",
+    "selenium>=4.27.1",
+    "playwright>=1.49.0",
+    "mcp[cli]>=1.9.4",
+    "tavily-python[search]>=0.7.6",
+]
+
+[project.optional-dependencies]
+# MCP features as optional dependency group
+mcp = [
+    "mcp>=1.0.0",
+    "mcpadapt>=0.1.0",
+    "fastmcp>=0.2.0",
+]
+
+dev = [
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "black>=24.10.0",
+    "isort>=5.13.2",
+    "flake8>=7.1.1",
+    "mypy>=1.13.0",
+    "pre-commit>=4.0.1",
+]
+
+test = [
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "pytest-httpx>=0.26.0"
+]
+
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.5.47",
+    "mkdocstrings[python]>=0.27.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/crewai-agent-project"
+Repository = "https://github.com/yourusername/crewai-agent-project"
+Documentation = "https://github.com/yourusername/crewai-agent-project#readme"
+"Bug Tracker" = "https://github.com/yourusername/crewai-agent-project/issues"
+
+[project.scripts]
+crewai-agent = "crewai_agent_project.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["crewai_agent_project*"]
+
+[tool.setuptools.package-dir]
+"crewai_agent_project" = "crewai_agent_project"
+
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312', 'py313']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["crewai_agent_project"]
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "crewai.*",
+    "langchain.*",
+    "chromadb.*",
+    "pytube.*",
+    "llama_index.*",
+    "dspy.*",
+    "fastmcp.*",
+    "mcp.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
