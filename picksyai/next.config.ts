@@ -1,8 +1,31 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  devIndicators: false
+  /* Other config options */
+  devIndicators: false,
+
+  async headers() {
+    return [
+      {
+        source: "/(.*)", // match all routes
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; " +
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline'; " +
+              "style-src 'self' 'unsafe-inline'; " +
+              "img-src 'self' data:; " +
+              "connect-src 'self'; " +
+              "object-src 'none'; " +
+              "base-uri 'self'; " +
+              "frame-ancestors 'none'; " +
+              "form-action 'self';",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
