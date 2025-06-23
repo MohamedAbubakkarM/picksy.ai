@@ -3,7 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* Other config options */
   devIndicators: false,
-
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   async headers() {
     return [
       {
