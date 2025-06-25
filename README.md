@@ -1,6 +1,6 @@
 # 🛍️ PicksyAI — AI-Powered E-commerce Deal Finder
 
-**PicksyAI** is an intelligent e-commerce assistant that simplifies your online shopping experience. It scans multiple Indian e-commerce platforms — like Amazon and Flipkart — to help you discover the best product deals quickly and easily. Built as a final-year project, PicksyAI aims to make deal-hunting faster, smarter, and more enjoyable.
+**PicksyAI** is an intelligent e-commerce assistant that simplifies your online shopping experience. It scans multiple Indian e-commerce platforms — like Amazon and Flipkart — to help you discover the best product deals quickly and easily. Built out of passion, PicksyAI aims to make deal-hunting faster, smarter, and more enjoyable.
 
 ---
 
