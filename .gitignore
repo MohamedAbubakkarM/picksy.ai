@@ -1,13 +1,34 @@
-/picksyai/agents/FetcherAgent.py
-/picksyai/agents/SentimentAgent.py
-/picksyai/agents/SummariserAgent.py
+# Environment / secrets
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
 
-/picksyai/models
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
 
-/picksyai/tasks/FetchingTask.py
-/picksyai/tasks/SentimentAnalyseTask.py
-/picksyai/tasks/SummarisingTask.py
+# Node / Next.js
+node_modules/
+.next/
+out/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-/picksyai/tools/SentimentAnalyser.py
-/picksyai/tools/Summariser.py
-/picksyai/tools/TavilyScraper.py
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

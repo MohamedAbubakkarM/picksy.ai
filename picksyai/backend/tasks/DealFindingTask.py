@@ -1,9 +1,8 @@
 from crewai import Task
-from ..models.LLM import llm
-from ..tools.DealFinder import EnhancedDealFinder
-from ..agents.DealFinderAgent import deal_finder_agent
-from ..models.DealFindingOutput import DealFindingOutput
-
+from tools.DealFinder import EnhancedDealFinder
+from agents.DealFinderAgent import deal_finder_agent
+from schemas.models import DealFindingOutput
+from schemas.models import llm
 deal_finder_tool = EnhancedDealFinder()
 
 deal_finding_task = Task(

@@ -1,4 +1,3 @@
-// file: app/components/Hero.tsx
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -26,16 +25,10 @@ const TypingLoader = () => {
 };
 
 function renderFormatted(data: any) {
-  console.log('Rendering data:', data); // Debug log
-  
-  // Handle string responses (error messages)
   if (typeof data === 'string') {
     return (
       <div className="bg-red-900/20 p-4 rounded-xl border border-red-500/30">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-            <span className="text-lg">❌</span>
-          </div>
           <h2 className="text-xl font-bold text-white">Error</h2>
         </div>
         <p className="text-gray-300 text-sm">{data}</p>
@@ -43,14 +36,10 @@ function renderFormatted(data: any) {
     );
   }
 
-  // Handle empty or invalid data
   if (!data || typeof data !== 'object') {
     return (
       <div className="bg-gray-900/20 p-4 rounded-xl border border-gray-500/30">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center">
-            <span className="text-lg">⚠️</span>
-          </div>
           <h2 className="text-xl font-bold text-white">No Data</h2>
         </div>
         <p className="text-gray-300 text-sm">No data received from the server.</p>
@@ -63,14 +52,9 @@ function renderFormatted(data: any) {
 
   return (
     <div className="space-y-6">
-      
-      {/* Compact Search Summary */}
       {data.summary && (
         <div className="bg-gradient-to-r from-[#1E1E1E] to-[#2A2A2A] p-4 rounded-xl border border-[#3A3A3A]">
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 bg-[#FFC30B] rounded-full flex items-center justify-center">
-              <span className="text-lg">🔍</span>
-            </div>
             <h2 className="text-xl font-bold text-white">Search Results</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -94,13 +78,9 @@ function renderFormatted(data: any) {
         </div>
       )}
 
-      {/* Compact Deals Display */}
       {Array.isArray(data.deals) && data.deals.length > 0 && (
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-[#FFC30B] rounded-full flex items-center justify-center">
-              <span className="text-lg">🏆</span>
-            </div>
             <h2 className="text-xl font-bold text-white">Best Deals</h2>
           </div>
           <div className="space-y-4">
@@ -111,7 +91,7 @@ function renderFormatted(data: any) {
                     BEST DEAL
                   </div>
                 )}
-                
+
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
@@ -167,13 +147,13 @@ function renderFormatted(data: any) {
                 </div>
 
                 <div className="flex gap-2">
-                  <a 
-                    href={deal.direct_link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href={deal.direct_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex-1 bg-[#FFC30B] hover:bg-[#e6b400] text-black font-bold py-2 px-4 rounded-xl text-center text-sm transition-all duration-300 transform hover:scale-105"
                   >
-                    View Deal →
+                    View Deal
                   </a>
                 </div>
               </div>
@@ -182,13 +162,9 @@ function renderFormatted(data: any) {
         </div>
       )}
 
-      {/* Compact Analysis Section */}
       {data.analysis && (
         <div className="bg-gradient-to-r from-[#1E1E1E] to-[#2A2A2A] p-4 rounded-xl border border-[#3A3A3A]">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-[#FFC30B] rounded-full flex items-center justify-center">
-              <span className="text-lg">📊</span>
-            </div>
             <h2 className="text-xl font-bold text-white">Deal Analysis</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -210,14 +186,10 @@ function renderFormatted(data: any) {
         </div>
       )}
 
-      {/* Compact Recommendations */}
       {data.recommendations && (
         <div className="bg-gradient-to-r from-green-900/20 to-[#1E1E1E] p-4 rounded-xl border border-green-500/30">
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-              <span className="text-lg">🤖</span>
-            </div>
-            <h2 className="text-xl font-bold text-white">AI Recommendations</h2>
+            <h2 className="text-xl font-bold text-white">Recommendations</h2>
           </div>
           <div className="bg-[#0F0F0F] p-3 rounded-xl">
             <p className="text-gray-300 leading-relaxed text-sm">{data.recommendations}</p>
@@ -225,13 +197,9 @@ function renderFormatted(data: any) {
         </div>
       )}
 
-      {/* Compact Notes Section */}
       {data.notes && (
         <div className="bg-gradient-to-r from-orange-900/20 to-[#1E1E1E] p-4 rounded-xl border border-orange-500/30">
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-              <span className="text-lg">⚠️</span>
-            </div>
             <h2 className="text-xl font-bold text-white">Important Notes</h2>
           </div>
           <div className="bg-[#0F0F0F] p-3 rounded-xl">
@@ -256,41 +224,29 @@ const Hero = () => {
     const trimmed = query.trim();
     if (!trimmed) return;
 
-    console.log('Submitting query:', trimmed); // Debug log
-
     setMessages((prev) => [...prev, { role: 'user', content: trimmed }]);
     setIsLoading(true);
     setQuery('');
 
-    fetch('http://127.0.0.1:8081/picsyai/ask', {
+    fetch('http://127.0.0.1:8081/picksyai/ask', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ product_name: trimmed }),
     })
       .then((res) => {
-        console.log('Response status:', res.status); // Debug log
-        console.log('Response headers:', res.headers); // Debug log
-        
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
       })
       .then((data) => {
-        console.log('Received data:', data); // Debug log
-        console.log('Data type:', typeof data); // Debug log
-        console.log('Data keys:', Object.keys(data || {})); // Debug log
-        
         setMessages((prev) => [...prev, { role: 'ai', content: data }]);
       })
       .catch((error) => {
-        console.error('Fetch error:', error); // Debug log
-        
         const message = error.message.includes('Failed to fetch')
           ? 'Unable to connect to the server. Please ensure the API is running.'
           : `Error: ${error.message}`;
         setMessages((prev) => [...prev, { role: 'ai', content: message }]);
       })
       .finally(() => {
-        console.log('Request completed'); // Debug log
         setIsLoading(false);
       });
   };
@@ -299,19 +255,17 @@ const Hero = () => {
 
   return (
     <div className="flex-1 min-h-screen bg-[#2B2B2B] text-white font-sans">
-      {/* Main content container - centered in the remaining space after sidebar */}
       <div className="flex flex-col items-center justify-center min-h-screen px-4">
         {!hasMessages ? (
-          /* Initial landing page - centered */
           <div className="flex flex-col items-center justify-center w-full max-w-4xl">
             <h1 className={`text-5xl text-[#FFC30B] ${sora.className} font-medium mb-10`}>picksy.ai</h1>
             <form onSubmit={handleSubmit} className="flex items-center bg-white shadow-md rounded-xl w-full max-w-2xl px-4 py-3 mb-6">
-              <input 
-                type="text" 
-                placeholder="Search the product...." 
-                className={`${epilogue.className} flex-grow bg-transparent focus:outline-none text-black text-base`} 
-                value={query} 
-                onChange={(e) => setQuery(e.target.value)} 
+              <input
+                type="text"
+                placeholder="Search the product...."
+                className={`${epilogue.className} flex-grow bg-transparent focus:outline-none text-black text-base`}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
               />
               <button type="submit" className="p-2 bg-[#FFC30B] hover:bg-[#e6b400] text-white rounded-lg ml-2">
                 <FiSend size={20} />
@@ -333,26 +287,24 @@ const Hero = () => {
             </div>
           </div>
         ) : (
-          /* Chat interface - centered with proper spacing */
           <div className="w-full max-w-4xl flex flex-col h-screen">
-            {/* Chat messages container */}
-            <div 
-              ref={chatRef} 
+            <div
+              ref={chatRef}
               className="flex-1 overflow-y-auto space-y-3 px-4 py-6 mb-20"
-              style={{ 
-                scrollbarWidth: 'none', 
-                msOverflowStyle: 'none' 
+              style={{
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none'
               }}
             >
               {messages.map((msg, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }} 
-                  transition={{ duration: 0.4 }} 
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
                   className={`w-full px-4 py-3 rounded-xl ${epilogue.className} ${
-                    msg.role === 'user' 
-                      ? 'bg-[#1E1E1E] text-white max-w-2xl mx-auto' 
+                    msg.role === 'user'
+                      ? 'bg-[#1E1E1E] text-white max-w-2xl mx-auto'
                       : 'bg-transparent text-white'
                   }`}
                 >
@@ -360,10 +312,10 @@ const Hero = () => {
                 </motion.div>
               ))}
               {isLoading && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }} 
-                  transition={{ duration: 0.4 }} 
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
                   className="bg-transparent text-white rounded-xl px-4 py-3 max-w-2xl mx-auto"
                 >
                   <TypingLoader />
@@ -371,15 +323,14 @@ const Hero = () => {
               )}
             </div>
 
-            {/* Fixed input form at bottom - positioned relative to the Hero component */}
             <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-2xl z-10">
               <form onSubmit={handleSubmit} className="flex items-center bg-white text-black px-4 py-3 rounded-xl shadow-lg">
-                <input 
-                  type="text" 
-                  placeholder="Search the product...." 
-                  className={`${epilogue.className} flex-grow bg-transparent focus:outline-none text-base`} 
-                  value={query} 
-                  onChange={(e) => setQuery(e.target.value)} 
+                <input
+                  type="text"
+                  placeholder="Search the product...."
+                  className={`${epilogue.className} flex-grow bg-transparent focus:outline-none text-base`}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
                 />
                 <button type="submit" className="p-2 bg-[#FFC30B] hover:bg-[#e6b400] text-white rounded-lg ml-2">
                   <FiSend size={20} />

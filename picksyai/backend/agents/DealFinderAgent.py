@@ -1,8 +1,11 @@
 from crewai import Agent
-from ..models.LLM import llm
-from ..tools.DealFinder import EnhancedDealFinder
 
-# Initialize the enhanced deal finder tool
+from schemas.models import llm
+from tools.DealFinder import EnhancedDealFinder
+
+from dotenv import load_dotenv
+load_dotenv()
+
 deal_finder_tool = EnhancedDealFinder()
 
 deal_finder_agent = Agent(
@@ -28,15 +31,11 @@ deal_finder_agent = Agent(
     tools=[deal_finder_tool],
     llm=llm,
     function_calling_llm=llm,
-
-    # Additional configuration for better performance
-    memory=True,
+    memory=False,
     step_callback=None,
     system_template=None,
     prompt_template=None,
     response_template=None,
-
-    # Ensure the agent focuses on the core task
     max_iter=3,
     max_execution_time=None,
 )

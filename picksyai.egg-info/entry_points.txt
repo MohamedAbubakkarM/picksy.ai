@@ -1,2 +1,0 @@
-[console_scripts]
-crewai-agent = crewai_agent_project.main:main

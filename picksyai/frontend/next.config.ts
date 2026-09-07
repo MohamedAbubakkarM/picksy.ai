@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-eval' 'unsafe-inline'; " +
               "style-src 'self' 'unsafe-inline'; " +
               "img-src 'self' data:; " +
-              "connect-src 'self'; " +
+              "connect-src 'self' http://127.0.0.1:8081 http://localhost:8081; " +
               "object-src 'none'; " +
               "base-uri 'self'; " +
               "frame-ancestors 'none'; " +

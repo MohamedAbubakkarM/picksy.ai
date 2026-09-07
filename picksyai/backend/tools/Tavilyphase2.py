@@ -1,9 +1,13 @@
+import os
 from crewai.tools import BaseTool
 from typing import Type
 from pydantic import BaseModel, Field
 import requests
+from dotenv import load_dotenv
 
-TAVILY_CLIENT_API_KEY = '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'
+load_dotenv()
+
+TAVILY_CLIENT_API_KEY = os.getenv("TAVILY_CLIENT_API_KEY")
 
 
 class TavilyInput(BaseModel):
@@ -23,8 +27,8 @@ class TavilySearchTool(BaseTool):
     def _run(self, query: str) -> TavilyOutput:
         response = requests.post(
             'https://api.tavily.com/search',
-            headers={'Authorization': f"Bearer {TAVILY_CLIENT_API_KEY}"},
             json={
+                'api_key': TAVILY_CLIENT_API_KEY,
                 'query': query,
                 'search_depth': 'advanced',
                 'include_answer': True,
@@ -32,7 +36,8 @@ class TavilySearchTool(BaseTool):
                 'max_results': 15,
                 'include_domains': ['amazon.in', 'flipkart.com'],
                 'include_images': False,
-            }
+            },
+            timeout=30,
         )
 
         if response.status_code != 200:
